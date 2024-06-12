@@ -1,0 +1,23 @@
+{
+  "name": "homepage-ese",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev --host",
+        "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@alpinejs/collapse": "^3.14.0",
+    "@astrojs/check": "^0.7.0",
+    "@astrojs/tailwind": "^5.1.0",
+    "@fontsource/inter": "^5.0.18",
+    "alpinejs": "^3.14.0",
+    "astro": "^4.10.2",
+    "latin-400.css": "@fontsource/inter/latin-400.css",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.4.5"
+  }
+}

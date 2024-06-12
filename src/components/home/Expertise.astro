@@ -1,0 +1,106 @@
+---
+const features = [
+  {
+    id: 'expertise-1',
+    name: 'Cardex de equipos de cómputo',
+    description:
+      'Registro detallado de todos los equipos de cómputo, incluyendo especificaciones técnicas, ubicación física, estado actual, historial de mantenimiento y uso. Este módulo permite la gestión eficiente y centralizada de toda la información relevante para el seguimiento y control de los equipos, asegurando así su disponibilidad y funcionalidad óptima.',
+  },
+  {
+    id: 'expertise-2',
+    name: 'Hojas de vida de equipos de cómputo',
+    description:
+      "Información completa y actualizada sobre el historial y las características de cada equipo de cómputo. Este módulo está dividido en dos subcarpetas: 'Área Administrativa' y 'Área Asistencial', permitiendo así una organización detallada y específica según el tipo de uso del equipo, facilitando su mantenimiento y gestión.",
+  },
+  {
+    id: 'expertise-3',
+    name: 'Plan de mantenimientos de equipos de cómputo',
+    description:
+      'Cronograma y procedimientos planificados para el mantenimiento regular de los equipos de cómputo. Este plan incluye tareas de revisión preventiva, correctiva y predictiva, asegurando que los equipos se mantengan en óptimas condiciones de funcionamiento, minimizando el riesgo de fallos y prolongando su vida útil.',
+  },
+  {
+    id: 'expertise-4',
+    name: 'Plan de mantenimiento de equipos de cómputo',
+    description:
+      "Plan detallado que incluye la documentación de todas las actividades de mantenimiento realizadas y planificadas. Este módulo también cuenta con una subcarpeta denominada 'Soportes de Socialización', donde se almacenan los documentos y evidencias de la comunicación y socialización del plan con los usuarios, asegurando que todos estén informados y alineados con las acciones de mantenimiento.",
+  },
+  {
+    id: 'expertise-5',
+    name: 'Cronograma de capacitaciones',
+    description:
+      "Programa detallado de las capacitaciones planificadas para el personal. Este cronograma incluye fechas, temas, instructores y objetivos de cada sesión de capacitación. Además, cuenta con una subcarpeta llamada 'Soportes de Capacitación' donde se almacenan los documentos de respaldo de cada sesión, como listas de asistencia, materiales didácticos y evaluaciones.",
+  },
+  {
+    id: 'expertise-6',
+    name: 'Documentos legales',
+    description:
+      "Repositorio centralizado de todos los documentos legales relevantes relacionados con los equipos de cómputo y los servicios asociados. Este módulo se organiza en tres subcarpetas: 'Contrato', 'Documentos Legales' y 'Hoja de Vida Ing. de Sistemas', permitiendo un acceso rápido y eficiente a la información legal necesaria para la gestión de los equipos.",
+  },
+  {
+    id: 'expertise-7',
+    name: 'Suministros',
+    description:
+      "Unidad dedicada a la gestión de suministros de equipos de cómputo, organizada en tres subcarpetas: 'Propuesta', 'Contrato' y 'Soporte de Entrega'. Este módulo facilita la administración de todo el proceso de adquisición, desde la propuesta inicial hasta la entrega final, asegurando la trazabilidad y el cumplimiento de todos los requisitos contractuales y de soporte.",
+  },
+];
+---
+
+<section class="py-16 sm:py-20">
+  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+    <div class="grid gap-12 lg:grid-cols-3 lg:gap-8">
+      <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Descripción</h2>
+      <div class="lg:col-span-2 mb-10">
+        <dl
+          class="-mt-3"
+          x-data="{ selected: null, toggle(value) { this.selected = this.selected === value ? null : value } }"
+        >
+          {
+            features.map((feature, index) => (
+              <div
+                class="rounded-3xl px-4 transition"
+                x-data={`{ id: ${index}, get isOpen() { return this.id === this.selected }, get isNextOpen() { return (this.id + 1) === this.selected } }`}
+                x-bind:class="{ 'bg-primary-500/10 dark:bg-primary-400/10': isOpen }"
+              >
+                <dt
+                  class="border-b text-lg transition"
+                  x-cloak
+                  x-bind:class="{ 'border-transparent': isOpen || isNextOpen, 'border-primary-900/10 dark:border-primary-300/10': !(isOpen || isNextOpen) }"
+                >
+                  <button
+                    type="button"
+                    class="group block w-full py-6 text-left transition focus-visible:outline-none"
+                    aria-controls={feature.id}
+                    x-on:click="toggle(id)"
+                    aria-expanded="false"
+                    x-bind:aria-expanded="isOpen.toString()"
+                  >
+                    <div class="flex items-center justify-between rounded-3xl group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-2 group-focus-visible:outline-primary-950 dark:group-focus-visible:outline-primary-200">
+                      <span class="font-medium">{feature.name}</span>
+                      <span class="ml-6 flex h-7 items-center">
+                        <svg
+                          class="h-6 w-6 rotate-0 transform text-primary-600 transition duration-200 ease-in-out dark:text-primary-400"
+                          x-bind:class="{ '-rotate-180': isOpen, 'rotate-0': !isOpen }"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path d="M11.9997 13.1714L16.9495 8.22168L18.3637 9.63589L11.9997 15.9999L5.63574 9.63589L7.04996 8.22168L11.9997 13.1714Z" />
+                        </svg>
+                      </span>
+                    </div>
+                  </button>
+                </dt>
+                <dd class="pb-6 pr-6" id={feature.id} x-show="isOpen" x-cloak x-collapse>
+                  <p class="text-base text-primary-950/70 dark:text-primary-200/70">
+                    {feature.description}
+                  </p>
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>

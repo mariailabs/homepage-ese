@@ -1,0 +1,79 @@
+---
+const services = [
+  {
+    step: '1',
+    name: 'Cardex de equipos de cómputo',
+    description:
+      'Registro detallado de todos los equipos de cómputo, incluyendo especificaciones, ubicación y estado actual.',
+    button: 'Ver',
+    link: "https://drive.google.com/drive/folders/1T8BcLw8OBvnRi1XNn0bH8Thw5hE6W_mk?usp=drive_link"
+  },
+  {
+    step: '2',
+    name: 'Hojas de vida de equipos de cómputo',
+    description:
+      'Información completa y actualizada sobre el historial y las características de cada equipo',
+    button: 'Ver',
+    link: "/modulos/hoja-vida"
+  },
+  {
+    step: '3',
+    name: 'Plan de mantenimientos de equipos de cómputo',
+    description:
+      'Cronograma y procedimientos para el mantenimiento regular de los equipos.',
+    button: 'Ver',
+    link: "/modulos/plan-mantenimiento"
+  },
+  {
+    step: '4',
+    name: 'Cronograma de capacitaciones',
+    description:
+      'Programa de capacitaciones planificadas para el personal con documentación de respaldo.',
+    button: 'Ver',
+    link: "/modulos/capacitaciones"
+  },
+  {
+    step: '5',
+    name: 'Documentos legales',
+    description:
+      'Repositorio de todos los documentos legales relevantes relacionados con los equipos y servicios.',
+    button: 'Ver',
+    link: "/modulos/legal"
+  },
+  {
+    step: '6',
+    name: 'Suministros',
+    description:
+      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+    button: 'Ver',
+    link: "/ups"
+  },
+];
+---
+
+<section class="py-16 sm:py-20">
+  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+    <div class="flex flex-col items-center gap-12 sm:gap-16">
+      <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Obten información</h2>
+      <div class="grid gap-8 lg:grid-cols-3">
+        {services.map((service) => (
+          <div class="flex flex-col justify-between gap-12 rounded-3xl bg-primary-500/10 px-6 py-8 dark:bg-primary-400/10">
+            <p class="text-sm">{service.step}</p>
+            <div class="flex flex-col gap-4">
+              <h3 class="text-xl font-medium">{service.name}</h3>
+              <p class="text-base text-primary-950/70 dark:text-primary-200/70 sm:text-lg">
+                {service.description}
+              </p>
+            </div>
+            <a
+              href={service.link}
+              class="flex flex-col items-center rounded-full border border-transparent bg-primary-600 px-5 py-3 text-base font-medium text-white transition hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 dark:bg-primary-400 dark:text-primary-950 dark:hover:bg-primary-300 dark:focus-visible:outline-primary-400"
+            >
+              {service.button}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
