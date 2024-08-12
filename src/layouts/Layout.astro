@@ -1,9 +1,9 @@
 ---
-import '@fontsource/inter/latin-400.css';
-import '@fontsource/inter/latin-500.css';
-import { ViewTransitions } from 'astro:transitions';
-import Footer from '../components/layout/Footer.astro';
-import Header from '../components/layout/Header.astro';
+import "@fontsource/inter/latin-400.css";
+import "@fontsource/inter/latin-500.css";
+import { ViewTransitions } from "astro:transitions";
+import Footer from "../components/layout/Footer.astro";
+import Header from "../components/layout/Header.astro";
 
 interface Props {
   description: string;
@@ -26,7 +26,9 @@ const { description, title } = Astro.props;
     <title>{title}</title>
     <ViewTransitions />
   </head>
-  <body class="flex flex-col min-h-screen bg-primary-50 text-primary-950 antialiased transition dark:bg-primary-950 dark:text-primary-200">
+  <body
+    class="flex flex-col min-h-screen bg-primary-50 text-primary-950 antialiased transition dark:bg-primary-950 dark:text-primary-200"
+  >
     <Header />
     <main class="flex-grow">
       <slot />
@@ -40,18 +42,26 @@ const { description, title } = Astro.props;
       }
     </style>
     <script>
-      import Alpine from 'alpinejs';
-      import collapse from '@alpinejs/collapse';
+      declare global {
+        interface Window {
+          Alpine: typeof Alpine;
+        }
+      }
+      import Alpine from "alpinejs";
+      import collapse from "@alpinejs/collapse";
 
       Alpine.plugin(collapse);
 
-      Alpine.store('theme', {
+      Alpine.store("theme", {
         init() {
           this.isDark = (() => {
-            if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-              return localStorage.getItem('theme') === 'dark';
+            if (
+              typeof localStorage !== "undefined" &&
+              localStorage.getItem("theme")
+            ) {
+              return localStorage.getItem("theme") === "dark";
             }
-            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
               return true;
             }
             return false;
@@ -62,7 +72,7 @@ const { description, title } = Astro.props;
 
         toggle() {
           this.isDark = !this.isDark;
-          localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
+          localStorage.setItem("theme", this.isDark ? "dark" : "light");
         },
       });
 

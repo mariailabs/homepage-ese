@@ -1,9 +1,14 @@
-FROM node:18-slim
-
+FROM node:lts AS build
 WORKDIR /app
+COPY package*.json ./
+RUN npm install -g pnpm
+COPY . .
 
-COPY package*.json .
+RUN pnpm install
+RUN pnpm run build
 
-RUN npm ci --audit=false --fund=false
 
-CMD ["npm", "start"]
+FROM nginx:alpine AS runtime
+COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+COPY --from=build /app/dist /usr/share/nginx/html
+EXPOSE 8080

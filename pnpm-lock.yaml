@@ -27,7 +27,7 @@ importers:
         specifier: ^4.10.2
         version: 4.10.2(typescript@5.4.5)
       latin-400.css:
-        specifier: link:@fontsource/inter/latin-400.css
+        specifier: '@fontsource/inter/latin-400.css'
         version: link:@fontsource/inter/latin-400.css
       tailwindcss:
         specifier: ^3.4.4
@@ -35,6 +35,13 @@ importers:
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
+    devDependencies:
+      '@types/alpinejs':
+        specifier: ^3.13.10
+        version: 3.13.10
+      '@types/alpinejs__collapse':
+        specifier: ^3.13.4
+        version: 3.13.4
 
 packages:
 
@@ -736,6 +743,12 @@ packages:
 
   '@shikijs/core@1.6.4':
     resolution: {integrity: sha512-WTU9rzZae1p2v6LOxMf6LhtmZOkIHYYW160IuahUyJy7YXPPjyWZLR1ag+SgD22ZMxZtz1gfU6Tccc8t0Il/XA==}
+
+  '@types/alpinejs@3.13.10':
+    resolution: {integrity: sha512-ah53tF6mWuuwerpDE7EHwbZErNDJQlsLISPqJhYj2RZ9nuTYbRknSkqebUd3igkhLIZKkPa7IiXjSn9qsU9O2w==}
+
+  '@types/alpinejs__collapse@3.13.4':
+    resolution: {integrity: sha512-kUBJWEDrHahD2Tb1lrir7iNTGN9ukvoJFjOY41EGC7F21E1KMSch5NrGgE0sqINrRT3lf1UZm3wxB3CNjJHBwg==}
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -2867,6 +2880,12 @@ snapshots:
     optional: true
 
   '@shikijs/core@1.6.4': {}
+
+  '@types/alpinejs@3.13.10': {}
+
+  '@types/alpinejs__collapse@3.13.4':
+    dependencies:
+      '@types/alpinejs': 3.13.10
 
   '@types/babel__core@7.20.5':
     dependencies:
